@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Expenses from './components/Expenses';
+// import Navbar from './components/Navbar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    let expenses = [
+        {
+            id: 'e1',
+            title: 'College Fee',
+            price: 2000,
+            date: new Date(2022, 1, 4)
+        },
+        {
+            id: 'e2',
+            title: 'Rent',
+            price: 500,
+            date: new Date(2022, 1, 4)
+        },
+        {
+            id: 'e3',
+            title: 'Car Insurance',
+            price: 60,
+            date: new Date(2022, 1, 4)
+        },
+        {
+            id: 'e4',
+            title: 'Miscellaneous',
+            price: 200,
+            date: new Date(2022, 1, 4)
+        }
+    ];
+
+
+    return (
+        <>
+            {/* <Navbar /> */}
+            <h2 className="text-center my-2">Let's get started</h2>
+            <Expenses item={expenses} />
+        </>
+    )
 }
 
 export default App;

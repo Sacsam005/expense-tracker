@@ -1,0 +1,32 @@
+.expense-item__date {
+  color: orange;
+  background: #000f;
+  height: 3rem;
+  width: 15%;
+  text-align: center;
+  outline: 1px solid white;
+  border-radius: 1rem;
+}
+
+.date-box {
+  position: relative;
+  top: 25%;
+}
+
+@media (max-width: 680px) {
+  .expense-item__date {
+    color: orange;
+    font-size: 0.8rem;
+    background: #000f;
+    height: 3rem;
+    width: 35%;
+    text-align: center;
+    outline: 1px solid white;
+    border-radius: 1rem;
+  }
+
+  .date-box {
+    position: relative;
+    top: 25%;
+  }
+}
