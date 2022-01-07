@@ -1,6 +1,7 @@
 import React from 'react'
 import Expenses from './components/Expenses';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
+import NewExpense from './components/NewExpense/NewExpense';
 
 const App = () => {
     let expenses = [
@@ -30,12 +31,18 @@ const App = () => {
         }
     ];
 
+    const saveExpenses = (expenseData) => {
+        console.log(expenseData);
+
+    }
+
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <h2 className="text-center my-2">Let's get started</h2>
             <Expenses item={expenses} />
+            <NewExpense onClickSave={saveExpenses} />
         </>
     )
 }

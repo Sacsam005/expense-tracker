@@ -19,11 +19,17 @@ export default function ExpenseItem(props) {
         setNewPrice(event.target.value);
     }
 
-    // Handle the changes
-    const handleChange = () => {
+    // Handles the title change
+    const handleTitle = () => {
         setTitle(newTitle);
+    }
+
+    // Handles the price change
+    const handlePrice = () => {
         setPrice(newPrice);
     }
+
+
 
     return (
         <>
@@ -32,11 +38,11 @@ export default function ExpenseItem(props) {
                 <div className="expense-item__description">
                     <h2>{title}</h2>
                     <input type="text" placeholder="change title" value={newTitle} onChange={changeTitle} required />
-                    <button onClick={handleChange} class="btn btn-primary">Change title</button>
+                    <button onClick={handleTitle} className="btn btn-primary">Change title</button>
 
                     <div className="expense-item__price">${price}</div>
                     <input type="number" max="5000" min="1" placeholder="change $$$" value={newPrice} onChange={changePrice} required />
-                    <button onClick={handleChange} class="btn btn-primary">Change Price</button>
+                    <button onClick={handlePrice} className="btn btn-primary">Change Price</button>
 
 
                 </div>
