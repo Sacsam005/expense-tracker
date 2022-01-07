@@ -1,6 +1,6 @@
 import React from 'react'
 import Expenses from './components/Expenses';
-// import Navbar from './components/Navbar';
+import Navbar from './components/Navbar';
 
 const App = () => {
     let expenses = [
@@ -33,7 +33,7 @@ const App = () => {
 
     return (
         <>
-            {/* <Navbar /> */}
+            <Navbar />
             <h2 className="text-center my-2">Let's get started</h2>
             <Expenses item={expenses} />
         </>
