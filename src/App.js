@@ -1,50 +1,53 @@
-import React from 'react'
-import Expenses from './components/Expenses';
-// import Navbar from './components/Navbar';
+import React, { useState, useEffect } from 'react';
+
 import NewExpense from './components/NewExpense/NewExpense';
 
+import Expenses from './components/Expenses/Expenses';
+
+
+let DUMMY_EXPENSE = [];
+
 const App = () => {
-    let expenses = [
-        {
-            id: 'e1',
-            title: 'College Fee',
-            price: 2000,
-            date: new Date(2022, 1, 4)
-        },
-        {
-            id: 'e2',
-            title: 'Rent',
-            price: 500,
-            date: new Date(2022, 1, 4)
-        },
-        {
-            id: 'e3',
-            title: 'Car Insurance',
-            price: 60,
-            date: new Date(2022, 1, 4)
-        },
-        {
-            id: 'e4',
-            title: 'Miscellaneous',
-            price: 200,
-            date: new Date(2022, 1, 4)
-        }
-    ];
 
-    const saveExpenses = (expenseData) => {
-        console.log(expenseData);
+    const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
 
+    function fetchData() {
+        fetch('https://techgun.website/sample/api/read.php').then(
+            response => {
+                return response.json();
+            }
+        ).then(
+            data => {
+                //console.log(data);
+                setExpenses(data);
+            }
+        );
     }
 
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const addExpenseHandler = (expense) => {
+        fetch('https://techgun.website/sample/api/create.php', {
+            method: 'POST',
+            body: JSON.stringify(expense),
+            headers: {
+                'content-Type': 'application/json'
+            }
+        }).then(
+            response => {
+                fetchData();
+            }
+        );
+    };
 
     return (
-        <>
-            {/* <Navbar /> */}
-            <h2 className="text-center my-2">Let's get started</h2>
+        <div>
+            <NewExpense onAddExpense={addExpenseHandler} />
             <Expenses item={expenses} />
-            <NewExpense onClickSave={saveExpenses} />
-        </>
-    )
+        </div>
+    );
 }
 
 export default App;
